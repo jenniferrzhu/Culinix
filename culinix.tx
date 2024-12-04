@@ -5,19 +5,19 @@ Program:
 ;
 
 Actions:
-    Mix | Cook | Serve | Add | FindIngredients
+    Mix | Cook | Serve | Add | Find | View
 ;
 
 Mix:
-    'mix' name=ID '=' ingredients=IngredientList ';'
-;
-
-IngredientList:
-    items+=Ingredient ('+' items+=Ingredient)*
+    'mix' name=ID '=' ingredients+=Ingredient ('+' ingredients+=Ingredient)* ';'   
 ;
 
 Ingredient:
-    ID | STRING
+    ID | STRING  
+;
+
+STRING:
+    '"' /[^"]+/ '"'
 ;
 
 Cook:
@@ -25,7 +25,7 @@ Cook:
 ;
 
 Serve:
-    'serve:' cooked_item=ID ';'
+    'serve:' item=ID ';'
 ;
 
 Add:
@@ -34,8 +34,12 @@ Add:
     '*=' result=ID ';'
 ;
 
-FindIngredients:
-    'for' 'ingredient' 'in' dish_name=ID ':' 
-    'find:' action=ID ';'
+Find:
+    'for' 'ingredient' 'in' key=Ingredient ':' 
+    'find:' action=Ingredient ';'
+;
+
+View:
+    'view' key=Ingredient ';'
 ;
 

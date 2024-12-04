@@ -1,5 +1,18 @@
 START
-mix x = bread + peanut butter + jelly + bread;
+mix x = bread + "peanut butter" + jelly + bread;
 cook: x;
 serve: x;
+
+add
+* bread
+* meat
+* cheese
+* bread
+*= cheeseburger;
+
+view cheeseburger;
+
+for ingredient in "PBJ Sandwich":
+    find: ingredient;
+
 END

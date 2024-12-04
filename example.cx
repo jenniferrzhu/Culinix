@@ -1,6 +1,6 @@
-mix x = bread + peanut butter + jelly + bread
-cook: x
-serve: x.food
+mix x = bread + peanut butter + jelly + bread;
+cook: x;
+serve: x.food;
 
 // output: pbj sandwhich
 
@@ -9,10 +9,10 @@ add
 * meat
 * cheese
 * bread
-*= cheeseburger
+*= cheeseburger;
 
 
-mix dish = chicken + potatoes + herbs
+mix dish = chicken + potatoes + herbs;
 
 for ingredient in dish:
-    find: ingredient
+    find: ingredient;
