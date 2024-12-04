@@ -1,0 +1,5 @@
+START
+mix x = bread + peanut butter + jelly + bread;
+cook: x;
+serve: x;
+END

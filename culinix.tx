@@ -1,5 +1,41 @@
 Program:
     'START'
-        commands*=Command
+        actions*=Actions 
     'END'
 ;
+
+Actions:
+    Mix | Cook | Serve | Add | FindIngredients
+;
+
+Mix:
+    'mix' name=ID '=' ingredients=IngredientList ';'
+;
+
+IngredientList:
+    items+=Ingredient ('+' items+=Ingredient)*
+;
+
+Ingredient:
+    ID | STRING
+;
+
+Cook:
+    'cook:' item=ID ';'
+;
+
+Serve:
+    'serve:' cooked_item=ID ';'
+;
+
+Add:
+    'add'
+    '*' ingredients+=Ingredient ('*' ingredients+=Ingredient)*
+    '*=' result=ID ';'
+;
+
+FindIngredients:
+    'for' 'ingredient' 'in' dish_name=ID ':' 
+    'find:' action=ID ';'
+;
+
