@@ -1,4 +1,6 @@
 Program:
+    'PREP'
+        load*=Load
     'START'
         actions*=Actions 
     'END'
@@ -35,11 +37,18 @@ Add:
 ;
 
 Find:
-    'for' 'ingredient' 'in' key=Ingredient ':' 
-    'find:' action=Ingredient ';'
+    'for' key=Ingredient ':' 
+    'find:' action=Keyword ';'
+;
+
+Keyword:
+    'recipes' | 'ingredients'
 ;
 
 View:
     'view' key=Ingredient ';'
 ;
 
+Load:
+    '>' name=Ingredient ':' ingredients+=Ingredient ('+' ingredients+=Ingredient)* ';'   
+;

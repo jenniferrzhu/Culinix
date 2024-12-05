@@ -1,3 +1,6 @@
+PREP
+> "Pepperoni Pizza": dough + "tomato sauce" + cheese + pepperoni;
+
 START
 mix x = bread + "peanut butter" + jelly + bread;
 cook: x;
@@ -12,7 +15,7 @@ add
 
 view cheeseburger;
 
-for ingredient in "PBJ Sandwich":
-    find: ingredient;
+for jelly:
+    find: recipes;
 
 END
