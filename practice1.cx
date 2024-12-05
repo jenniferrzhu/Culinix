@@ -15,7 +15,7 @@ add
 
 view cheeseburger;
 
-for jelly:
-    find: recipes;
+for Pasta:
+    find: ingredients;
 
 END

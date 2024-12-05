@@ -7,7 +7,9 @@ class Recipe:
 
     def __init__(self):
         self.recipes = {
-            "PBJ Sandwich": ["bread", "peanut butter", "jelly", "bread"]
+            "PBJ Sandwich": ["bread", "peanut butter", "jelly", "bread"],
+            "Garlic Pasta": ["noodles", "garlic"],
+            "Marinara Pasta": ["noodles", "marinara"]
         } 
 
         self.var = {}
@@ -20,7 +22,7 @@ class Recipe:
                 return name
         return None
 
-    def find(self, item):
+    def findRecipes(self, item):
         found = []  
         for name, ingredients in self.recipes.items():
             ingredients = [itm.lower() for itm in ingredients]
@@ -31,6 +33,15 @@ class Recipe:
         else:
             return found
 
+    def findIngredients(self, item):
+        found = {}
+        for name, ingredients in self.recipes.items(): 
+            if item in name:   
+                found[name] = ingredients
+        if not found:
+            return None
+        else:
+            return found
 
     def interpret(self, model): 
         for c in model.load:
@@ -59,15 +70,17 @@ class Recipe:
                 print(f"Added {c.result.capitalize()} to the Recipe Book")
             elif c.__class__.__name__ == "Find": 
                 if c.action == "ingredients":
-                    if self.recipes.get(c.key) is not None:
-                        print(f"{c.key}: {self.recipes[c.key]}")
+                    results = self.findIngredients(c.key)
+                    if results is not None:
+                        print(f"All {c.key} Recipes: {results}")
                     else:
                         print(f"PAUSE: Recipe Not Found")
                 else:
-                    if self.find(c.key) is None:
+                    results = self.findRecipes(c.key)
+                    if results is None:
                         print(f"PAUSE: No Matches Found")
                     else:
-                        print(f"Recipes with {c.key}: {self.find(c.key)}")
+                        print(f"Recipes with {c.key}: {results}")
             elif c.__class__.__name__ == "View": 
                 if c.key == "all":
                     print(f"{self.recipes}")
