@@ -43,10 +43,7 @@ class Recipe:
         else:
             return found
 
-    def interpret(self, model): 
-        for c in model.load:
-            self.var[c.name] = c.ingredients 
-            print(f"Added {c.name}")
+    def interpret(self, model):  
         for c in model.actions:  
             if c.__class__.__name__ == "Mix":   
                 self.var[c.name] = c.ingredients 
@@ -65,9 +62,9 @@ class Recipe:
                     print("Error: Failed to Cook")
                 else:
                     print(f"Serving {dish}!")
-            elif c.__class__.__name__ == "Add":
-                self.recipes[c.result.capitalize()] = c.ingredients
-                print(f"Added {c.result.capitalize()} to the Recipe Book")
+            elif c.__class__.__name__ == "Load":
+                self.recipes[c.name] = c.ingredients
+                print(f"Added {c.name} to the Recipe Book")
             elif c.__class__.__name__ == "Find": 
                 if c.action == "ingredients":
                     results = self.findIngredients(c.key)
@@ -84,10 +81,32 @@ class Recipe:
             elif c.__class__.__name__ == "View": 
                 if c.key == "all":
                     print(f"{self.recipes}")
-                elif self.recipes.get(c.key.capitalize()) is not None:
-                    print(f"Recipe for {c.key.capitalize()}: {self.recipes[c.key.capitalize()]}")
+                elif self.recipes.get(c.key) is not None:
+                    print(f"Recipe for {c.key}: {self.recipes[c.key]}")
                 else:
                     print(f"PAUSE: No Recipe(s) Found")
+            elif c.__class__.__name__ == "Edit": 
+                if self.recipes.get(c.key) is not None:
+                    if c.action == "remove":
+                        for itm in c.item:
+                            if itm in self.recipes[c.key]:
+                                self.recipes[c.key].remove(itm)
+                            else:
+                                print(f"{itm} not found in recipe") 
+                    elif c.action == "add":
+                        for itm in c.item:
+                            self.recipes[c.key].append(itm) 
+                    elif c.action == "new":
+                        self.recipes[c.key] = c.item
+                    else:
+                        if len(c.item) is 2:
+                            for i, itm in enumerate(self.recipes[c.key]):
+                                if itm == c.item[0]:
+                                    self.recipes[c.key][i] = c.item[1];
+                                    break; 
+                    print(f"({c.action.upper()}) updated {c.key}: {self.recipes[c.key]}")
+                else:
+                    print(f"PAUSE: {c.key} Not Defined in Recipe Book")
             else:
                 print(f"Error: Incorrect Syntax")
 

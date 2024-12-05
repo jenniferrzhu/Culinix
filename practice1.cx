@@ -6,12 +6,13 @@ mix x = bread + "peanut butter" + jelly + bread;
 cook: x;
 serve: x;
 
-add
-* bread
-* meat
-* cheese
-* bread
-*= cheeseburger;
+> cheeseburger: bread + meat + cheese + bread;
+
+edit "PBJ Sandwich":
+    add: jelly, bread;
+
+edit "PBJ Sandwich":
+    replace: jelly, bread;
 
 view cheeseburger;
 

@@ -7,7 +7,7 @@ Program:
 ;
 
 Actions:
-    Mix | Cook | Serve | Add | Find | View
+    Mix | Cook | Serve | Load | Find | View | Edit
 ;
 
 Mix:
@@ -30,18 +30,16 @@ Serve:
     'serve:' item=ID ';'
 ;
 
-Add:
-    'add'
-    '*' ingredients+=Ingredient ('*' ingredients+=Ingredient)*
-    '*=' result=ID ';'
+Load:
+    '>' name=Ingredient ':' ingredients+=Ingredient ('+' ingredients+=Ingredient)* ';'   
 ;
 
 Find:
     'for' key=Ingredient ':' 
-    'find:' action=Keyword ';'
+    'find:' action=FindKeyword ';'
 ;
 
-Keyword:
+FindKeyword:
     'recipes' | 'ingredients'
 ;
 
@@ -49,6 +47,11 @@ View:
     'view' key=Ingredient ';'
 ;
 
-Load:
-    '>' name=Ingredient ':' ingredients+=Ingredient ('+' ingredients+=Ingredient)* ';'   
+Edit:
+    'edit' key=Ingredient ':' 
+    action=EditKeyword ':' item+=Ingredient (',' item+=Ingredient)* ';'
+;
+
+EditKeyword:
+    'remove' | 'new' | 'add' | 'replace'
 ;
