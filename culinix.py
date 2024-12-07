@@ -58,7 +58,7 @@ class Recipe:
                     print(f"PAUSE: Incorrect Ingredients. No Dish Found.")
             elif c.__class__.__name__ == "Serve":
                 dish = self.var[c.item] 
-                if dish is None:
+                if dish is None or isinstance(dish, list):
                     print("Error: Failed to Cook")
                 else:
                     print(f"Serving {dish}!")
