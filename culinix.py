@@ -99,7 +99,7 @@ class Recipe:
                     elif c.action == "new":
                         self.recipes[c.key] = c.item
                     else:
-                        if len(c.item) is 2:
+                        if len(c.item) == 2:
                             for i, itm in enumerate(self.recipes[c.key]):
                                 if itm == c.item[0]:
                                     self.recipes[c.key][i] = c.item[1];
