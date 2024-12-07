@@ -1,0 +1,12 @@
+PREP
+
+START
+
+> "Garlic Pasta": noodles + garlic;
+> "Marinara Pasta": noodles + marinara;
+for Pasta:
+    find: ingredients;
+for noodles:
+    find: recipes;
+
+END

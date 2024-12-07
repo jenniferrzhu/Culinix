@@ -1,0 +1,11 @@
+PREP
+
+START
+
+> cheeseburger: bread + meat + cheese + bread;
+> "PBJ Sandwich": bread + "peanut butter" + jelly + bread;
+view "PBJ Sandwich"; 
+view all;
+
+END
+

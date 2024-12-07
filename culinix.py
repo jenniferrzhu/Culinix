@@ -43,11 +43,14 @@ class Recipe:
         else:
             return found
 
-    def interpret(self, model):  
-        for c in model.actions:  
+    def interpret(self, model): 
+        for c in model.load: 
+            self.recipes[c.name] = c.ingredients
+            print(f"Loaded {c.name} to the Recipe Book")
+        for c in model.actions:   
             if c.__class__.__name__ == "Mix":   
                 self.var[c.name] = c.ingredients 
-                print(f"Mix {self.var}")
+                print(f"Mix {self.var[c.name]}")
             elif c.__class__.__name__ == "Cook":
                 print(f"...mixing ingredients together...cooking...")
                 dish = self.cook(self.var[c.item])
@@ -55,7 +58,7 @@ class Recipe:
                 if dish is not None:
                     print(f"--COOKING DONE--")
                 else:
-                    print(f"PAUSE: Incorrect Ingredients. No Dish Found.")
+                    print(f"PAUSE: Incorrect Ingredients for {c.item}. No Dish Found.")
             elif c.__class__.__name__ == "Serve":
                 dish = self.var[c.item] 
                 if dish is None or isinstance(dish, list):
@@ -80,7 +83,7 @@ class Recipe:
                         print(f"Recipes with {c.key}: {results}")
             elif c.__class__.__name__ == "View": 
                 if c.key == "all":
-                    print(f"{self.recipes}")
+                    print(f"All Recipes: {self.recipes}") 
                 elif self.recipes.get(c.key) is not None:
                     print(f"Recipe for {c.key}: {self.recipes[c.key]}")
                 else:

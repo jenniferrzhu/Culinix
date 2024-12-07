@@ -1,0 +1,11 @@
+PREP
+
+START
+
+mix x = bread + "peanut butter" + jelly + bread;
+mix y = bread + meat + cheese + bread;
+mix z = dough + "tomato sauce" + cheese + pepperoni;
+
+view all;
+
+END

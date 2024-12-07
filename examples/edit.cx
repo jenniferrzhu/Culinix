@@ -1,0 +1,22 @@
+PREP
+
+START
+
+view "PBJ Sandwich";
+
+edit "PBJ Sandwich":
+    add: jelly, bread;
+
+view "PBJ Sandwich";
+
+edit "PBJ Sandwich":
+    replace: jelly, bread;
+
+view "PBJ Sandwich";
+
+edit "PBJ Sandwich":
+    new: jelly, bread;
+
+view "PBJ Sandwich";
+
+END

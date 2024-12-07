@@ -1,0 +1,10 @@
+PREP
+
+START
+
+mix correct = bread + "peanut butter" + jelly + bread;
+mix wrong = bread + "peanut butter" + bread;
+cook: correct;
+cook: wrong; 
+
+END

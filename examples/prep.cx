@@ -1,0 +1,12 @@
+PREP
+
+> "Pepperoni Pizza": dough + "tomato sauce" + cheese + pepperoni;
+> cheeseburger: bread + meat + cheese + bread;
+> "PBJ Sandwich": bread + "peanut butter" + jelly + bread;
+
+START
+
+view all;
+
+END
+
