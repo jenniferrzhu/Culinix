@@ -1,7 +1,7 @@
 from textx import metamodel_from_file
 culinix_mm = metamodel_from_file('culinix.tx')
 
-culinix_model = culinix_mm.model_from_file('./examples/edit.cx')
+culinix_model = culinix_mm.model_from_file('practice1.cx')
 
 class Recipe:
 

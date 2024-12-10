@@ -1,0 +1,15 @@
+PREP
+
+START
+
+> cheeseburger: bread + meat + cheese + bread;
+
+view cheeseburger;
+
+delete cheeseburger;
+
+view cheeseburger;
+
+view all;
+
+END
