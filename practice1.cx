@@ -19,4 +19,10 @@ view cheeseburger;
 for Pasta:
     find: ingredients;
 
+delete cheeseburger;
+
+view cheeseburger;
+
 END
+
+

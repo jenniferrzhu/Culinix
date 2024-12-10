@@ -7,7 +7,7 @@ Program:
 ;
 
 Actions:
-    Mix | Cook | Serve | Load | Find | View | Edit
+    Mix | Cook | Serve | Load | Find | View | Edit | Delete
 ;
 
 Mix:
@@ -54,4 +54,8 @@ Edit:
 
 EditKeyword:
     'remove' | 'new' | 'add' | 'replace'
+;
+
+Delete:
+    'delete' item=Ingredient ';'
 ;

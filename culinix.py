@@ -1,7 +1,7 @@
 from textx import metamodel_from_file
 culinix_mm = metamodel_from_file('culinix.tx')
 
-culinix_model = culinix_mm.model_from_file('practice1.cx')
+culinix_model = culinix_mm.model_from_file('./examples/edit.cx')
 
 class Recipe:
 
@@ -87,7 +87,7 @@ class Recipe:
                 elif self.recipes.get(c.key) is not None:
                     print(f"Recipe for {c.key}: {self.recipes[c.key]}")
                 else:
-                    print(f"PAUSE: No Recipe(s) Found")
+                    print(f"PAUSE: No Recipe(s) Found for {c.key}")
             elif c.__class__.__name__ == "Edit": 
                 if self.recipes.get(c.key) is not None:
                     if c.action == "remove":
@@ -105,11 +105,17 @@ class Recipe:
                         if len(c.item) == 2:
                             for i, itm in enumerate(self.recipes[c.key]):
                                 if itm == c.item[0]:
-                                    self.recipes[c.key][i] = c.item[1];
+                                    self.recipes[c.key][i] = c.item[1]
                                     break; 
                     print(f"({c.action.upper()}) updated {c.key}: {self.recipes[c.key]}")
                 else:
                     print(f"PAUSE: {c.key} Not Defined in Recipe Book")
+            elif c.__class__.__name__ == "Delete": 
+                if c.item in self.recipes:
+                    del self.recipes[c.item]
+                    print(f"Removed {c.item} from Recipe Book")
+                else:
+                    print(f"Failed: {c.item} Not In Recipe Book")
             else:
                 print(f"Error: Incorrect Syntax")
 

@@ -10,6 +10,11 @@ edit "PBJ Sandwich":
 view "PBJ Sandwich";
 
 edit "PBJ Sandwich":
+    remove: bread;
+
+view "PBJ Sandwich";
+
+edit "PBJ Sandwich":
     replace: jelly, bread;
 
 view "PBJ Sandwich";
@@ -20,3 +25,4 @@ edit "PBJ Sandwich":
 view "PBJ Sandwich";
 
 END
+

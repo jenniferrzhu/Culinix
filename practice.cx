@@ -1,0 +1,11 @@
+PREP
+> "Pepperoni Pizza": dough + "tomato sauce" + cheese + pepperoni;
+START
+mix x = bread + "peanut butter" + jelly + bread;
+cook: x;
+serve: x; 
+edit "PBJ Sandwich":
+    add: jelly, bread;  
+for Pasta:
+    find: ingredients;
+END 
